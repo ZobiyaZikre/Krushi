@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KrushiSetu – Login</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      /* Keep your original background */
+      background: url('./lushgreenfarm.jpeg') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", sans-serif;
+      position: relative;
+    }
+    /* Dark overlay */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .login-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 600px;   /* Increased size */
+      background: #fff;
+      padding: 3rem;      /* More spacing inside */
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .login-card h2 {
+      font-weight: 700;
+    }
+    .form-control {
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+    }
+    .btn-success {
+      border-radius: 0.75rem;
+      font-weight: bold;
+      padding: 0.75rem;
+    }
+    .toggle-link {
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h2 class="text-center text-success mb-4">🌿 KrushiSetu Login</h2>
+    <form>
+      <!-- Mobile Number -->
+      <div class="mb-3 input-group">
+        <span class="input-group-text bg-success text-white">
+          <i class="bi bi-phone"></i>
+        </span>
+        <input type="tel" class="form-control" placeholder="Enter mobile number" pattern="[0-9]{10}" required>
+      </div>
+
+      <!-- Password / OTP toggleable -->
+      <div class="mb-3 input-group" id="password-field">
+        <span class="input-group-text bg-success text-white">
+          <i class="bi bi-lock"></i>
+        </span>
+        <input type="password" class="form-control" placeholder="Enter password" required>
+      </div>
+
+      <div class="mb-3 input-group d-none" id="otp-field">
+        <span class="input-group-text bg-success text-white">
+          <i class="bi bi-key"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="Enter OTP">
+      </div>
+
+      <!-- Toggle link for switching login type -->
+      <p class="text-center">
+        <span class="toggle-link text-success" onclick="toggleLogin()">Login with OTP</span>
+      </p>
+
+      <!-- Submit button -->
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-success btn-lg">Login</button>
+      </div>
+
+      <p class="text-center">
+        Don't have an account?
+        <a href="register.html" class="text-success fw-bold">Register</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Bootstrap Icons & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function toggleLogin() {
+      const passwordField = document.getElementById('password-field');
+      const otpField = document.getElementById('otp-field');
+      const toggleLink = document.querySelector('.toggle-link');
+
+      if (passwordField.classList.contains('d-none')) {
+        passwordField.classList.remove('d-none');
+        otpField.classList.add('d-none');
+        toggleLink.innerText = 'Login with OTP';
+      } else {
+        passwordField.classList.add('d-none');
+        otpField.classList.remove('d-none');
+        toggleLink.innerText = 'Login with Password';
+      }
+    }
+  </script>
+</body>
+</html>
